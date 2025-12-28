@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WapBuy - Online Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Global Styles */
+* { margin:0; padding:0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+body { background: #f4f4f4; }
+a { text-decoration: none; color: inherit; }
+
+/* Header */
+header { background: #007bff; color: #fff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+header h1 { font-size: 24px; }
+header nav a { margin-left: 20px; color: #fff; font-weight: 500; }
+
+/* Categories Menu */
+.categories { display: flex; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+.category { background: #fff; padding: 15px 20px; margin: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; }
+.category:hover { transform: scale(1.05); background: #007bff; color: #fff; }
+
+/* Product Grid */
+.products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 0 30px 30px; }
+.product { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; }
+.product img { width: 100%; height: 150px; object-fit: cover; border-radius: 5px; }
+.product h3 { font-size: 16px; margin: 10px 0; }
+.product p { font-size: 14px; color: #555; }
+.product span { font-weight: 700; color: #007bff; display: block; margin-top: 5px; }
+.product button { background: #28a745; border: none; color: #fff; padding: 10px; width: 100%; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+.product button:hover { background: #218838; }
+
+/* Footer */
+footer { background: #222; color: #fff; text-align: center; padding: 15px; margin-top: 30px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>WapBuy</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Categories</a>
+    <a href="#">Cart</a>
+    <a href="#">Account</a>
+  </nav>
+</header>
+
+<section class="categories">
+  <div class="category" onclick="filterProducts('furniture')">Furniture</div>
+  <div class="category" onclick="filterProducts('books')">Books</div>
+  <div class="category" onclick="filterProducts('vegetables')">Vegetables</div>
+  <div class="category" onclick="filterProducts('pcs')">PCs</div>
+  <div class="category" onclick="filterProducts('agriculture')">Agriculture Inputs</div>
+  <div class="category" onclick="filterProducts('clothes')">Clothes</div>
+  <div class="category" onclick="filterProducts('shoes')">Shoes</div>
+  <div class="category" onclick="filterProducts('others')">Others</div>
+</section>
+
+<section class="products" id="productGrid">
+  <!-- Sample Products -->
+  <div class="product" data-category="furniture">
+    <img src="https://via.placeholder.com/200x150?text=Chair" alt="Chair">
+    <h3>Wooden Chair</h3>
+    <p>Comfortable dining chair</p>
+    <span>$50</span>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product" data-category="books">
+    <img src="https://via.placeholder.com/200x150?text=Book" alt="Book">
+    <h3>Learning HTML</h3>
+    <p>Beginner's guide to HTML</p>
+    <span>$15</span>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product" data-category="vegetables">
+    <img src="https://via.placeholder.com/200x150?text=Vegetables" alt="Vegetables">
+    <h3>Fresh Tomatoes</h3>
+    <p>Organic red tomatoes</p>
+    <span>$5</span>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product" data-category="pcs">
+    <img src="https://via.placeholder.com/200x150?text=Laptop" alt="Laptop">
+    <h3>Gaming Laptop</h3>
+    <p>High performance laptop</p>
+    <span>$1200</span>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product" data-category="agriculture">
+    <img src="https://via.placeholder.com/200x150?text=Seeds" alt="Seeds">
+    <h3>Maize Seeds</h3>
+    <p>High yield seeds</p>
+    <span>$20</span>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product" data-category="clothes">
+    <img src="https://via.placeholder.com/200x150?text=T-Shirt" alt="T-Shirt">
+    <h3>Casual T-Shirt</h3>
+    <p>Cotton, all sizes</p>
+    <span>$25</span>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product" data-category="shoes">
+    <img src="https://via.placeholder.com/200x150?text=Shoes" alt="Shoes">
+    <h3>Running Shoes</h3>
+    <p>Lightweight & comfortable</p>
+    <span>$80</span>
+    <button>Add to Cart</button>
+  </div>
+  <div class="product" data-category="others">
+    <img src="https://via.placeholder.com/200x150?text=Other" alt="Other">
+    <h3>Miscellaneous Item</h3>
+    <p>Special product</p>
+    <span>$30</span>
+    <button>Add to Cart</button>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 WapBuy. All rights reserved.
+</footer>
+
+<script>
+// Filter products by category
+function filterProducts(category) {
+  const products = document.querySelectorAll('.product');
+  products.forEach(p => {
+    if (category === 'all' || p.dataset.category === category) {
+      p.style.display = 'block';
+    } else {
+      p.style.display = 'none';
+    }
+  });
+}
+</script>
+
+</body>
+</html>
